@@ -1,0 +1,23 @@
+plugins:
+  debug:
+    shortCut: Shift-D
+    description: Add debug container
+    scopes:
+      - containers
+    command: bash
+    background: false
+    confirm: true
+    args:
+      - -c
+      - "kubectl debug -n $NAMESPACE -it $POD --target=$NAME --image=parrotsec/security --profile=general"
+  dive:
+    shortCut: d
+    confirm: false
+    description: "Dive image"
+    scopes:
+      - containers
+    command: sudo
+    background: false
+    args:
+      - dive
+      - $COL-IMAGE
